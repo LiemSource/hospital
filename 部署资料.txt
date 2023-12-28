@@ -1,0 +1,30 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY '++<wJ6hi7&W,xx';
+CREATE USER 'hospital'@'%' IDENTIFIED BY '++<wJ6hi7&W,xx';
+GRANT ALL PRIVILEGES ON *.* TO 'hospital'@'%'
+
+备份数据库
+mysqldump --set-gtid-purged=off -h database-1.csoitg4i1qtc.ap-northeast-1.rds.amazonaws.com -u root -p hospital > /root/hospital.sql
+还原数据库
+mysql -u hospital -p hospital < hospital.sql
+
+自动发布脚本： publishHospitalJob.sh
+supervisorctl stop Hospital
+cd /home/hospital/hospital
+git pull
+cd HospitalJob
+dotnet publish --configuration Debug
+supervisorctl restart Hospital
+echo 发布成功
+
+
+supervisor挂载配置文件：hospital.ini
+[program:Hospital]
+command=dotnet HospitalJob.dll --urls="http://*:5000/"; 运行程序的命令
+directory=/home/hospital/hospital/HospitalJob/bin/Debug/net6.0 ; 命令执行的目录
+user=root ; 进程执行的用户身份
+stopsignal=INT
+autostart=true
+autorestart=true ; 程序意外退出是否自动重启
+startsecs=3 ;/自动重启间隔
+stderr_logfile=/var/log/supervisor/vae.err.log ; 错误日志文件
+stdout_logfile=/var/log/supervisor/vae.out.log ; 输出日志文件
