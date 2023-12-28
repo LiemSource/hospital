@@ -36,17 +36,19 @@ namespace VaeHelper
                 if (!string.IsNullOrEmpty(token)) _bearer = KeyValuePair.Create(DateTime.Now, token);
             }
             var headers = new WebHeaderCollection();
-            var randomNum = new Random(Guid.NewGuid().GetHashCode()).Next(0, 100).ToString();
-            var timestamp = DateTime.Now;
-            headers.Add("RandomNum", randomNum);
-            headers.Add("UserName", "zszl@sysucc.org.cn");
-            headers.Add("timestamp", DateTimeHelper.ConvertDateTimeToLong(timestamp).ToString());
-            var bearer = _bearer.Value;
-            headers.Add("Authorization", $"Bearer {bearer}");
-            var signContent = $"\"zszl@sysucc.org.cn\"|\"{bearer}\"|\"{timestamp}\"|\"{randomNum}\"|\"requestBODY{HttpUtility.UrlDecode(request)}\"";
-            var sign = SHA256WithRSAHelper.Sign(signContent, _privateKey);
-
+            var timestamp = DateTimeHelper.ConvertDateTimeToLong(DateTime.Now);
+            var appCode = "0082752c";
+            headers.Add("appCode", appCode);
+            headers.Add("timestamp", timestamp.ToString());
+            var nonce = Guid.NewGuid().ToString();
+            var startIndex = (int)(timestamp % 10);
+            var substring = nonce.Substring(startIndex, nonce.Length - startIndex);
+            headers.Add("nonce", nonce);
+            headers.Add("appVersion", "4.0.0");
+            var signContent = $"123456{timestamp}{nonce}{substring}{request}";
+            var sign = SHA256WithRSAHelper.M1050B(signContent);
             headers.Add("signature", sign);
+            headers.Add("Content-Type", "application/json");
             return headers;
         }
         public async Task<string> GetApiToken(IWebProxy webProxy = null)
@@ -75,15 +77,11 @@ namespace VaeHelper
         }
         public async Task<JObject> PatientLogin(string phone, string password, IWebProxy webProxy = null)
         {
-            var sign = GetSginLogin();
-            var request = $"phone={phone}&password={password}&deviceId=141fe1da9e61aca863a&appCode=d07e85e3&appVersion=1&timestamp={sign.tiemstamp}&sig={sign.sign}";
-            var url = $"{_patientUrl}/api/User/Login?{request}";
+            var request = new Dictionary<string, string> { { "password", password }, { "deviceId", "" }, { "verifyCodeId", "" }, { "verifyCode", "" }, { "tel", phone } };
+            var url = $"{_patientUrl}/h5union/User/Login";
             url = "https://patientcloud.sysucc.org.cn/h5union/user/login";
-            var data = new { password = password, deviceId = Guid.NewGuid().ToString("N").ToLower(), tel = phone };
-            var headers = GetPatientHeader(request);
-            headers.Add("nonce", "9d99bbd9-1dca-44ca-869b-5d0747028369");
-            headers.Add("appCode", "0082752c");
-            var result = await HttpHelper.Post(url, JsonConvert.SerializeObject(data), headers, webProxy: webProxy);
+            var headers = GetPatientHeader(JsonConvert.SerializeObject(request));
+            var result = await HttpHelper.Post(url, JsonConvert.SerializeObject(request), headers, webProxy: webProxy, contentType: "application/json");
             if (result.Error || string.IsNullOrEmpty(result.ResponseString)) return null;
             var dataObject = JObject.Parse(result.ResponseString);
             return dataObject;
@@ -98,7 +96,6 @@ namespace VaeHelper
             var dataObject = JObject.Parse(result.ResponseString);
             return dataObject;
         }
-
         public async Task<JToken> GetDeptDisease(string orgID, string areaType, IWebProxy webProxy = null)
         {
             var url = $"{_patientUrl}/api/Register/GetDeptDisease?OrgID={orgID}&type={areaType}";
@@ -108,7 +105,6 @@ namespace VaeHelper
             if ((int)dataObject.SelectToken("msgCode") != 0) return null;
             return dataObject.SelectToken("data");
         }
-
         private static string _scheduleUrl = "https://appregist.sysucc.org.cn:10005";
         public async Task<JToken> QueryEntityDateList(string entityName, string orgID = "ALL", int newPatientFlag = 1, IWebProxy webProxy = null)
         {
@@ -124,11 +120,11 @@ namespace VaeHelper
         {
             var url = "https://patientcloud.sysucc.org.cn/h5union/register/getScheduleTimeList";
             var data = new { appType = "", appId = "", id = depId, type = 1, orgId = orgID, newPatientFlag = 1 };
-            var headers = new WebHeaderCollection();
-            headers.Add("token", token);
-            headers.Add("Content-Type", "application/json;charset=UTF-8");
-            var result = await HttpHelper.Post(url, JsonConvert.SerializeObject(data), headers,
-                timeOut: (int)TimeSpan.FromSeconds(60).TotalMilliseconds, webProxy: webProxy, acceptType: "*/*");
+
+            var request = JsonConvert.SerializeObject(data);
+            var header = GetPatientHeader(request);
+
+            var result = await HttpHelper.Post(url, request, header, timeOut: (int)TimeSpan.FromSeconds(60).TotalMilliseconds, webProxy: webProxy, acceptType: "*/*");
             if (result.Error || string.IsNullOrEmpty(result.ResponseString)) return null;
             var dataObject = JObject.Parse(result.ResponseString);
             if ((int)dataObject.SelectToken("status") != 0) return JToken.Parse("[]");
@@ -189,10 +185,8 @@ namespace VaeHelper
         {
             var url = "https://patientcloud.sysucc.org.cn/h5union/register/getDeptScheduleList";
             var request = new { appType = "", appId = "", deptCode = depId, scheduleDate = date, orgId = orgID, newPatientFlag = 1 };
-            var headers = new WebHeaderCollection();
-            headers.Add("token", token);
-            headers.Add("Content-Type", "application/json;charset=UTF-8");
-            var result = await HttpHelper.Post(url, JsonConvert.SerializeObject(request), headers,
+            var requestContent = JsonConvert.SerializeObject(request);
+            var result = await HttpHelper.Post(url, requestContent, GetPatientHeader(requestContent),
                 timeOut: (int)TimeSpan.FromSeconds(60).TotalMilliseconds, webProxy: webProxy, acceptType: "*/*");
             if (result.Error || string.IsNullOrEmpty(result.ResponseString)) return null;
             var dataObject = JObject.Parse(result.ResponseString);

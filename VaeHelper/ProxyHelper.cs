@@ -14,23 +14,25 @@ namespace VaeHelper
         protected readonly ILogger _logger;
         private string _user;
         private string _token;
-        private static readonly string _url = "https://dvapi.doveproxy.net/cmapi.php"; //"https://dvapi.doveip.com/cmapi.php";
+        private static readonly string _url = "https://dvapi.doveip.com/cmapi.php";
 
         private List<string> _geos;
         private string _currentGeos;
         public ProxyHelper(ILoggerFactory logger, IConfiguration configuration)
         {
             _logger = logger.CreateLogger(this.GetType());
-            _user = configuration.GetValue<string>("ProxyUser:User") ?? "fridayliem2211";
-            var password = configuration.GetValue<string>("ProxyUser:Password") ?? "Tbquf4pRkwB7F2X";
+            _user = configuration.GetValue<string>("ProxyUser:User") ?? "fridayliem";
+            var password = configuration.GetValue<string>("ProxyUser:Password") ?? "liemdaili1";
             var result = HttpHelper.Get($"{_url}?rq=login&user={_user}&password={password}", timeOut: (int)TimeSpan.FromMinutes(1).TotalMilliseconds).Result;
             if (string.IsNullOrEmpty(result.ResponseString)) return;
             var tokenData = JObject.Parse(result.ResponseString);
-            _token = tokenData.SelectToken("data.token").ToString();
+            if (tokenData.SelectToken("errno")?.ToString() == "800")
+                _token = "";
+            else
+                _token = tokenData.SelectToken("data.token").ToString();
             var ges = "lc,nc,cf,mq,ht,bb,fj,fm,kr,sg,dj,cv,mw,cg,bw,km,mr,ml,re,ly,mu,ci,sc,rw,mg,kg,gm,lr,az,kz,am,cz,tj,pl,om,qa,it,rs,bj,na,cl,do,cr,pt,ba,bo,tr,sl,gb,iq,dz,kh,py,ls,cu,de,ec,cm,eg,kw,ar,sn,cd,ng,fr,ma,gh,pr,ua,vn,ke,np,br,sa,lk,my,tw,pe,gt,ir,hn,pk,ni,us,et,co,sv,ae,ru,ve,ao,th,ph,za,bd,mx,id,in,bg,gy,gr,ge,ro,uz,zm,uy,so,es,tn,tz,pg,mm,zw,sd,sz,ug,mz,tg,pa,hu,jm,tt,ca,al,lu,cy,be,hr,nl,sk,si,md,ch,se,by,ye,il,lb,ps,la,jo,jp,hk";
             _geos = ges.Split(',').ToList();
         }
-
         private WebProxy GetProxy(Func<WebProxy, bool> proxyTestFunc = null, string geo = null)
         {
             if (string.IsNullOrEmpty(_token))
@@ -79,37 +81,36 @@ namespace VaeHelper
             }
             return wp;
         }
-
-
         public WebProxy GetProxy(string geo = null, int timeOut = 5000)
         {
             WebProxy proxy = null;
-            try
-            {
-                proxy = GetProxy(wp =>
-               {
-                   try
-                   {
-                       HttpHelper.Get("https://www.baidu.com/", webProxy: wp, timeOut: timeOut).Wait();
-                   }
-                   catch (Exception ex)
-                   {
-                       _logger.LogWarning($"代理Ip:{wp.Address}不可用,{ex.Message}!");
-                       return false;
-                   }
-                   return true;
-               }, geo);
-            }
-            catch (ProxyExceptiton ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "获取代理超时");
-            }
-            _logger.LogInformation($"已切换代理Ip:{proxy?.Address}");
             return proxy;
+            //try
+            //{
+            //    proxy = GetProxy(wp =>
+            //   {
+            //       try
+            //       {
+            //           HttpHelper.Get("https://www.baidu.com/", webProxy: wp, timeOut: timeOut).Wait();
+            //       }
+            //       catch (Exception ex)
+            //       {
+            //           _logger.LogWarning($"代理Ip:{wp.Address}不可用,{ex.Message}!");
+            //           return false;
+            //       }
+            //       return true;
+            //   }, geo);
+            //}
+            //catch (ProxyExceptiton ex)
+            //{
+            //    throw ex;
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, "获取代理超时");
+            //}
+            //_logger.LogInformation($"已切换代理Ip:{proxy?.Address}");
+            //return proxy;
         }
     }
 

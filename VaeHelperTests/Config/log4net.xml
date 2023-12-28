@@ -32,9 +32,9 @@
 
     </layout>
   </appender>
-  <root>
+  <hospital>
     <level value="ALL"/>
 	  <!--此处切换日志输出方式：控制台输出日志，文本输出日志，MongoDB输出日志等-->
     <appender-ref ref="RollingFileAppender" />
-  </root>
+  </hospital>
 </log4net>

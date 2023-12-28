@@ -11,23 +11,6 @@ namespace VaeHelper
 {
     public class SHA256WithRSAHelper
     {
-        /// <summary>  
-        /// 签名  
-        /// </summary>  
-        /// <param name="content">待签名字符串</param>  
-        /// <param name="privateKey">私钥</param>  
-        /// <param name="input_charset">编码格式</param>  
-        /// <returns>签名后字符串</returns>  
-        //public static string Sign(string content, string privateKey, string input_charset = "UTF-8")
-        //{
-
-        //    byte[] Data = Encoding.GetEncoding(input_charset).GetBytes(content);
-        //    RSACryptoServiceProvider rsa = DecodePemPrivateKey(privateKey);
-        //    SHA256 sh = new SHA256CryptoServiceProvider();
-        //    byte[] signData = rsa.SignData(Data, sh);
-        //    return Convert.ToBase64String(signData);
-        //}
-
         /// <summary>
         /// RSA分段解密,密文来自java
         /// </summary>
@@ -41,7 +24,7 @@ namespace VaeHelper
             byte[] cipherbytes;
             rsa.FromXmlString(xmlPrivateKey);
             var sourceBytes = Convert.FromBase64String(m_strDecryptString);
-            int page = rsa.KeySize/ 8; 
+            int page = rsa.KeySize / 8;
             using (var plaiStream = new MemoryStream(sourceBytes))
             {
                 using (var decrypStream = new MemoryStream())
@@ -360,6 +343,30 @@ namespace VaeHelper
             byte[] signature = sig.GenerateSignature(); // Base 64 encode the sig so its 8-bit clean 
             var signedString = Convert.ToBase64String(signature);
             return signedString;
+        }
+
+        public static string M1050B(string inputString)
+        {
+            try
+            {
+                byte[] data = Encoding.UTF8.GetBytes(inputString);
+
+                // 使用 SHA-256 算法计算散列
+                byte[] hash;
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    hash = sha256.ComputeHash(data);
+                }
+
+                // 将字节数组转换为十六进制字符串
+                string result = BitConverter.ToString(hash).Replace("-", "").ToLower();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "";
+            }
         }
     }
 }
