@@ -1,0 +1,30 @@
+﻿CREATE TABLE `Hangfire_Set` (
+ `Id` int(11) NOT NULL AUTO_INCREMENT,
+ `Key` varchar(100) NOT NULL,
+ `Value` varchar(255) NOT NULL,
+ `Score` float NOT NULL,
+ `ExpireAt` datetime DEFAULT NULL,
+ PRIMARY KEY (`Id`),
+ UNIQUE KEY `IX_Set_Key_Value` (`Key`,`Value`)
+) ENGINE=InnoDB  CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `Hangfire_State`
+(
+	Id int(11) NOT NULL AUTO_INCREMENT,
+	JobId int(11) NOT NULL,
+	Name varchar(20) NOT NULL,
+	Reason varchar(100) NULL,
+	CreatedAt datetime NOT NULL,
+	Data longtext NULL,
+	PRIMARY KEY (`Id`),
+	KEY `FK_HangFire_State_Job` (`JobId`)
+) ENGINE=InnoDB  CHARSET=utf8;
+
+CREATE TABLE `Hangfire_List`
+(
+	`Id` int(11) NOT NULL AUTO_INCREMENT,
+	`Key` varchar(100) NOT NULL,
+	`Value` longtext NULL,
+	`ExpireAt` datetime NULL,
+	PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  CHARSET=utf8;

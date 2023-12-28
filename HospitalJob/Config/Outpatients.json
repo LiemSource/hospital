@@ -1,0 +1,642 @@
+﻿[
+    {
+        "orgID": "01",
+        "ddId": "21C1",
+        "ddName": "鼻咽门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "51C1",
+        "ddName": "病理会诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "53C1",
+        "ddName": "B超介入"
+    },
+    {
+        "orgID": "01",
+        "ddId": "53C2",
+        "ddName": "超声介入专科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "4109",
+        "ddName": "PICC置管门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41C1",
+        "ddName": "导管维护"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41CH",
+        "ddName": "输液港维护门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C3",
+        "ddName": "小细胞肺癌联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "10C1",
+        "ddName": "脑转移瘤多学科联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "35C3",
+        "ddName": "肉瘤联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "15C6",
+        "ddName": "卵巢癌单病种MDT"
+    },
+    {
+        "orgID": "01",
+        "ddId": "12C5",
+        "ddName": "肺癌免疫综合治疗联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "10C2",
+        "ddName": "垂体瘤多学科联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "39C2",
+        "ddName": "脊柱转移瘤联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "12C3",
+        "ddName": "食管癌联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C7",
+        "ddName": "乳腺癌联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "12C4",
+        "ddName": "肺癌联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "36C1",
+        "ddName": "儿童肿瘤门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "20C1",
+        "ddName": "放疗门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "20C2",
+        "ddName": "放疗后装门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "15C4",
+        "ddName": "妇科门诊2"
+    },
+    {
+        "orgID": "01",
+        "ddId": "15C2",
+        "ddName": "宫颈病变门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "17C5",
+        "ddName": "妇科肿瘤保育和遗传咨询专科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "15C1",
+        "ddName": "妇科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "15C3",
+        "ddName": "妇科诊刮门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "14C1",
+        "ddName": "肝脏外科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "39C1",
+        "ddName": "骨与软组织肿瘤门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "52C1",
+        "ddName": "核医学门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "37C1",
+        "ddName": "免疫治疗（青菜岗）"
+    },
+    {
+        "orgID": "01",
+        "ddId": "35C1",
+        "ddName": "黑色素瘤与肉瘤内科/免疫治疗"
+    },
+    {
+        "orgID": "01",
+        "ddId": "19C2",
+        "ddName": "淋巴水肿门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "21C4",
+        "ddName": "鼻咽癌康复门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "13C2",
+        "ddName": "造口门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41C8",
+        "ddName": "简易门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "1BC1",
+        "ddName": "结直肠门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "1BC4",
+        "ddName": "排便障碍门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "1BC3",
+        "ddName": "遗传性肠癌门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41C2",
+        "ddName": "口腔门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "72C1",
+        "ddName": "临床营养科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "55C1",
+        "ddName": "疼痛联合门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "55C3",
+        "ddName": "输液港门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "55C2",
+        "ddName": "麻醉门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41T6",
+        "ddName": "门诊小手术室"
+    },
+    {
+        "orgID": "01",
+        "ddId": "16C1",
+        "ddName": "泌尿门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "16C3",
+        "ddName": "膀胱镜检查"
+    },
+    {
+        "orgID": "01",
+        "ddId": "33C2",
+        "ddName": "内镜门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "33C5",
+        "ddName": "无痛内镜门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "62C2",
+        "ddName": "新药治疗门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C4",
+        "ddName": "I期病区门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C6",
+        "ddName": "乳腺癌遗传门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C5",
+        "ddName": "遗传性胃癌门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "30C1",
+        "ddName": "内科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "19C1",
+        "ddName": "乳腺门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "16C2",
+        "ddName": "神经外科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41C3",
+        "ddName": "特需门诊(二楼)"
+    },
+    {
+        "orgID": "01",
+        "ddId": "11C1",
+        "ddName": "头颈门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41C9",
+        "ddName": "退休专家门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "17C1",
+        "ddName": "介入门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "17C8",
+        "ddName": "HIFU（聚焦超声）门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "1AC1",
+        "ddName": "胃外科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "41CA",
+        "ddName": "心血管门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "12C1",
+        "ddName": "胸科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "12C2",
+        "ddName": "胸科内镜门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "34C1",
+        "ddName": "血液肿瘤门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "22C1",
+        "ddName": "胰胆外科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "17C2",
+        "ddName": "影像科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "40C1",
+        "ddName": "用药咨询门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "42C1",
+        "ddName": "职工保健室"
+    },
+    {
+        "orgID": "01",
+        "ddId": "32C1",
+        "ddName": "中医科门诊"
+    },
+    {
+        "orgID": "01",
+        "ddId": "31C2",
+        "ddName": "综合科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "21C5",
+        "ddName": "（黄埔）鼻咽门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "51C2",
+        "ddName": "（黄埔）病理会诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "53C4",
+        "ddName": "（黄埔）B超介入"
+    },
+    {
+        "orgID": "02",
+        "ddId": "53C3",
+        "ddName": "（黄埔）超声介入专科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41CD",
+        "ddName": "（黄埔）导管维护"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41CI",
+        "ddName": "（黄埔）输液港维护门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "4110",
+        "ddName": "（黄埔）PICC置管门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "15CB",
+        "ddName": "（黄埔）妇科肿瘤多学科联合门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "16C8",
+        "ddName": "（黄埔）前列腺癌多学科联合门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "1BC6",
+        "ddName": "（黄埔）直肠癌个体化保肛MDT门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "20C6",
+        "ddName": "（黄埔）放疗后装门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "20C7",
+        "ddName": "（黄埔）放疗门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "17CA",
+        "ddName": "（黄埔）妇科诊刮门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "15C7",
+        "ddName": "（黄埔）妇科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "17C9",
+        "ddName": "（黄埔）妇科肿瘤保育和遗传咨询专科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "14C3",
+        "ddName": "（黄埔）肝脏外科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "39C3",
+        "ddName": "（黄埔）骨与软组织肿瘤门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "52C2",
+        "ddName": "（黄埔）核医学门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "35C2",
+        "ddName": "（黄埔）黑色素瘤与肉瘤内科/免疫治疗"
+    },
+    {
+        "orgID": "02",
+        "ddId": "13C3",
+        "ddName": "伤口造口门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "19C4",
+        "ddName": "淋巴水肿门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "21C6",
+        "ddName": "鼻咽康复门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "72C3",
+        "ddName": "营养管理护理门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "17C7",
+        "ddName": "心理舒缓门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "86C2",
+        "ddName": "疼痛护理门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "16C7",
+        "ddName": "前列腺康复门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "19C5",
+        "ddName": "乳腺专科护理门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "86C1",
+        "ddName": "快速康复护理门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41CG",
+        "ddName": "（黄埔）简易门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "1BC5",
+        "ddName": "（黄埔）结直肠门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "1B07",
+        "ddName": "（黄埔）结直肠/胃普通外科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41CF",
+        "ddName": "（黄埔）口腔门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "72C2",
+        "ddName": "（黄埔）临床营养科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "55C6",
+        "ddName": "（黄埔）疼痛联合门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "55C4",
+        "ddName": "（黄埔）麻醉门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41T8",
+        "ddName": "（黄埔）门诊小手术室"
+    },
+    {
+        "orgID": "02",
+        "ddId": "16C4",
+        "ddName": "（黄埔）泌尿门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "16C8",
+        "ddName": "（黄埔）前列腺癌多学科联合门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "16C7",
+        "ddName": "前列腺康复门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "33C6",
+        "ddName": "（黄埔）内镜门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "33C7",
+        "ddName": "（黄埔）无痛内镜门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "30CA",
+        "ddName": "（黄埔）Ⅰ期病区门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "62C3",
+        "ddName": "腹膜转移癌和腹水"
+    },
+    {
+        "orgID": "02",
+        "ddId": "30C9",
+        "ddName": "（黄埔）内科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "19C3",
+        "ddName": "（黄埔）乳腺门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "11C2",
+        "ddName": "（黄埔）头颈门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "17C6",
+        "ddName": "（黄埔）介入门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "1B07",
+        "ddName": "（黄埔）结直肠/胃普通外科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "1AC2",
+        "ddName": "（黄埔）胃外门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "41CJ",
+        "ddName": "（黄埔）心血管门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "12C6",
+        "ddName": "（黄埔）胸科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "34C2",
+        "ddName": "（黄埔）血液肿瘤门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "22C2",
+        "ddName": "（黄埔）胰胆外科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "57C1",
+        "ddName": "（黄埔）影像科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "40C2",
+        "ddName": "（黄埔）药学门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "42C2",
+        "ddName": "（黄埔）职工保健科"
+    },
+    {
+        "orgID": "02",
+        "ddId": "32C2",
+        "ddName": "（黄埔）中医科门诊"
+    },
+    {
+        "orgID": "02",
+        "ddId": "31C3",
+        "ddName": "（黄埔）综合科门诊"
+    }
+]
