@@ -15,6 +15,10 @@
     <PackageReference Include="Hangfire.Core" Version="1.7.23" />
     <PackageReference Include="Hangfire.Dashboard.Basic.Authentication.Core3" Version="1.0.1" />
     <PackageReference Include="Hangfire.MySql.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="5.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Spire.PDF" Version="8.3.9" />

@@ -10,7 +10,7 @@ using VaeHelper;
 namespace HospitalJob.Controllers
 {
     [Route("[controller]")]
-    [ApiController]   
+    [ApiController]
     public class JobApiController : Controller
     {
         protected readonly ILogger _logger;
@@ -46,7 +46,7 @@ namespace HospitalJob.Controllers
 
         [HttpGet]
         public string Get()
-        {           
+        {
             return "hello world";
         }
 
@@ -187,7 +187,7 @@ namespace HospitalJob.Controllers
         {
             try
             {
-                
+
                 _medicationQueryService.QueryMedicationsByPatientName(name, startDate, endDate).Wait();
                 //BackgroundJob.Enqueue(() => _medicationQueryService.QueryMedicationsByPatientId(pid));
                 return Json(new { RetCode = RetCode.BizOK, RetMessage = "job调度成功" });
@@ -236,9 +236,9 @@ namespace HospitalJob.Controllers
         public JsonResult RetryMedicationQuery(DateTime startDate, DateTime endDate)
         {
             try
-            {              
-                
-                BackgroundJob.Enqueue(() => _medicationQueryService.QueryMedications(true,startDate,endDate));
+            {
+
+                BackgroundJob.Enqueue(() => _medicationQueryService.QueryMedications(true, startDate, endDate));
 
                 return Json(new { RetCode = RetCode.BizOK, RetMessage = "job ok" });
 
@@ -278,7 +278,7 @@ namespace HospitalJob.Controllers
 
 
         [HttpGet("outPatient/medicationsByName")]
-        public JsonResult QueryOutPatientMedicationsByName(string name,DateTime startDate, DateTime endDate)
+        public JsonResult QueryOutPatientMedicationsByName(string name, DateTime startDate, DateTime endDate)
         {
             try
             {
@@ -350,8 +350,7 @@ namespace HospitalJob.Controllers
         {
             try
             {
-                _inPatientHistoryQueryService.Excute1();
-                //BackgroundJob.Enqueue(() => _inPatientHistoryQueryService.Query(startDate, endDate, orderByDesc));
+                BackgroundJob.Enqueue(() => _inPatientHistoryQueryService.Query(startDate, endDate, orderByDesc));
                 return Json(new { RetCode = RetCode.BizOK, RetMessage = $"job {startDate} | {endDate}" });
 
             }
@@ -373,7 +372,7 @@ namespace HospitalJob.Controllers
             try
             {
                 //BackgroundJob.Enqueue(() => _inPatientHistoryQueryService.Query(startDate, endDate, orderByDesc));
-                BackgroundJob.Enqueue(() => _inPatientHistoryQueryService.ReviewedJob(startDate, endDate, orderByDesc,null));
+                BackgroundJob.Enqueue(() => _inPatientHistoryQueryService.ReviewedJob(startDate, endDate, orderByDesc, null));
                 return Json(new { RetCode = RetCode.BizOK, RetMessage = "job调度成功" });
             }
             catch (Exception ex)

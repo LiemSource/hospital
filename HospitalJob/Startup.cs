@@ -18,6 +18,7 @@ using VaeHelper;
 
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalJob
 {
@@ -52,7 +53,9 @@ namespace HospitalJob
             services.AddHangfireServer();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             services.AddMvc(o => o.EnableEndpointRouting = false);
+            services.AddTransient<MysqlEntityFrameworkDesignTimeServices>();
             services.AddDbContext<HospitalContext>();
+            services.AddScoped<DbContext, HospitalContext>();
             services.AddTransient<ProxyHelper>();
             services.AddSingleton<HospitalHelper>();
             services.AddSingleton<PatientHelper>();
@@ -118,7 +121,7 @@ namespace HospitalJob
             RecurringJob.AddOrUpdate<OutPatientQueryService>("OutPatientTask", r => r.Excute(null), "0 30 19 * * ?", TimeZoneInfo.Local);//每天晚上19点30分
             RecurringJob.AddOrUpdate<QueryDoctScheduleService>("QueryDoctScheduleTask", r => r.Excute(null), "0 0 8,10,12,14,16,18,20 * * ?", TimeZoneInfo.Local);//每天晚上19点00分
             RecurringJob.AddOrUpdate<OutPatientMedicationQueryService>("OutPatientMedicationTask", r => r.Excute(null), "0 00 23 * * ?", TimeZoneInfo.Local);//每天晚上23点00分
-            RecurringJob.AddOrUpdate<PatientVisitReviewedJob>("PatientVisitReviewedTask", r => r.Excute(null), "0 0 20 L * ?", TimeZoneInfo.Local);//每月最后一天晚上8点
+            //RecurringJob.AddOrUpdate<PatientVisitReviewedJob>("PatientVisitReviewedTask", r => r.Excute(null), "0 0 20 L * ?", TimeZoneInfo.Local);//每月最后一天晚上8点
 
             //RecurringJob.AddOrUpdate<InPatientHistoryQueryService>("InPatientHistoryQueryTask", r => r.Excute(null), "0 00 8 * * ?", TimeZoneInfo.Local);//每天上午8点00分
             //BackgroundJob.Enqueue<OutPatientMedicationQueryService>(r => r.QueryOutPatientMedications(new DateTime(2022, 01, 01), new DateTime(2022, 03, 01), 3, 0));

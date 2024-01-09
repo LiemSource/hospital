@@ -134,7 +134,7 @@ namespace HospitalJob.Jobs
                     _logger.LogInformation($"新增{result}条待复核记录");
                 }
 
-                await Query(startDate, endDate);
+                await Query(startDate, endDate, orderByDesc);
             }
             catch (Exception ex)
             {

@@ -29,7 +29,7 @@ namespace VaeHelperTests
         {
             var polyTaskService = container.Resolve<OutPatientQueryService>();
             var hospitalContext = container.Resolve<HospitalContext>();
-            var doctSchedules = hospitalContext.DoctSchedules.Where(s => s.VisitDate >= new DateTime(2022, 09, 23) && s.VisitDate < new DateTime(2022, 09, 25)
+            var doctSchedules = hospitalContext.DoctSchedules.Where(s => s.VisitDate >= new DateTime(2023, 12, 01) && s.VisitDate < new DateTime(2024, 01, 01)
             && !string.IsNullOrEmpty(s.RegPointID)).ToList();
             var schemaQuery = hospitalContext.QuerySchemaInfos.FirstOrDefault();
             var ids = new List<int>();
@@ -49,9 +49,9 @@ namespace VaeHelperTests
         {
             var polyTaskService = container.Resolve<MedicationQueryService>();
             var hospitalContext = container.Resolve<HospitalContext>();
-            var patient = hospitalContext.Patients.FirstOrDefault(p => p.Id == "ZY010000591430");
-            //polyTaskService.QueryMedications(true).Wait();
-            polyTaskService.QueryMedication("", patient).Wait();
+            //var patient = hospitalContext.Patients.FirstOrDefault(p => p.Id == "ZY010000591430");
+            polyTaskService.QueryMedications(true, new DateTime(2023, 12, 01), new DateTime(2024, 01, 01)).Wait();
+            //polyTaskService.QueryMedication("", patient).Wait();
             //polyTaskService.Excute(null).Wait();
         }
         [TestMethod()]
@@ -59,7 +59,7 @@ namespace VaeHelperTests
         {
             var polyTaskService = container.Resolve<OutPatientMedicationQueryService>();
             //polyTaskService.Excute(null).Wait();
-            polyTaskService.QueryOutPatientMedications(new DateTime(2022, 08, 01), new DateTime(2022, 09, 01),1, 0).Wait();
+            polyTaskService.QueryOutPatientMedications(new DateTime(2022, 08, 01), new DateTime(2022, 09, 01), 1, 0).Wait();
         }
         [TestMethod()]
         public void QueryDoctScheduleServiceTest()

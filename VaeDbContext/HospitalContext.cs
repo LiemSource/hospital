@@ -29,7 +29,8 @@ namespace VaeDbContext
         {
             //if (_loggerFactory != null)
             //    optionsBuilder.UseLoggerFactory(_loggerFactory);//输出执行的sql
-            optionsBuilder.UseMySQL(_configuration["ConnectionStrings:HospitalConnection"], b => b.MigrationsAssembly("VeaH5"));
+            optionsBuilder.UseMySQL(_configuration["ConnectionStrings:HospitalConnection"], b => b.MigrationsAssembly("HospitalJob"));
+            
         }
 
         public DbSet<T> GetDbSet<T>() where T : class

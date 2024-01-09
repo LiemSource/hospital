@@ -18,7 +18,7 @@ namespace VaeEntity.Hospital
         [Column("in_patient_id", TypeName = "varchar(20)")]
         public string InPatientId { get; set; }
 
-        [Column("name", TypeName = "varchar(50)")]
+        [Column("name", TypeName = "varchar(200)")]
         public string Name { get; set; }
 
         [Column("doct_name", TypeName = "varchar(50)")]

@@ -42,7 +42,7 @@ namespace VaeEntity.Hospital
         [Column("specs", TypeName = "varchar(50)")]
         public string Specs { get; set; }
 
-        [Column("mo_note", TypeName = "varchar(50)")]
+        [Column("mo_note", TypeName = "varchar(200)")]
         public string MoNote { get; set; }
 
         [Column("place_date_time", TypeName = "varchar(20)")]
