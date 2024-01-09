@@ -2,23 +2,20 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BotHelper;
 using Hangfire;
-using Hangfire.MySql.Core;
+using Hangfire.MySql;
 using HangfireBasicAuthenticationFilter;
 using HospitalJob.Jobs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Data;
+using System.Net;
 using VaeDbContext;
 using VaeHelper;
-
-
-using Microsoft.AspNetCore.Http;
-using System.Net;
-using Microsoft.EntityFrameworkCore;
 
 namespace HospitalJob
 {
@@ -40,14 +37,14 @@ namespace HospitalJob
                     .UseFilter(new NotReentryServerHangfireFilter())
                     .UseStorage(new MySqlStorage(Configuration["ConnectionStrings:HangfireConnection"], new MySqlStorageOptions
                     {
-                        TransactionIsolationLevel = IsolationLevel.ReadCommitted,
+                        TransactionIsolationLevel =  System.Transactions.IsolationLevel.ReadCommitted,
                         QueuePollInterval = TimeSpan.FromSeconds(15),       //- 作业队列轮询间隔。默认值为15秒。
                         JobExpirationCheckInterval = TimeSpan.FromHours(1), //- 作业到期检查间隔（管理过期记录）。默认值为1小时。
                         CountersAggregateInterval = TimeSpan.FromMinutes(5), //- 聚合计数器的间隔。默认为5分钟。
                         PrepareSchemaIfNecessary = true, //- 如果设置为true，则创建数据库表。默认是true。
                         DashboardJobListLimit = 50000, //- 仪表板作业列表限制。默认值为50000。
                         TransactionTimeout = TimeSpan.FromMinutes(1), //- 交易超时。默认为1分钟。
-                        TablePrefix = "Hangfire"
+                        TablesPrefix = "Hangfire"
                     })));
 
             services.AddHangfireServer();
