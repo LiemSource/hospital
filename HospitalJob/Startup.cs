@@ -53,7 +53,6 @@ namespace HospitalJob
             services.AddHangfireServer();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             services.AddMvc(o => o.EnableEndpointRouting = false);
-            services.AddTransient<MysqlEntityFrameworkDesignTimeServices>();
             services.AddDbContext<HospitalContext>();
             services.AddScoped<DbContext, HospitalContext>();
             services.AddTransient<ProxyHelper>();
